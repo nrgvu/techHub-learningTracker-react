@@ -1,55 +1,35 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-import { Route, BrowserRouter } from "react-router-dom";
+
 function About(){
-  const [posts, setPosts] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(10);
 
-
-    useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const response = await axios.get(
-          `https://jsonplaceholder.typicode.com/posts`,
-          {
-            params: {
-              _page: currentPage,
-              _limit: postsPerPage,
-            },
-          }
-        );
-        setPosts(response.data);
-      } catch (error) {
-        console.error('Error fetching posts:', error);
-      }
-    };
-
-    fetchPosts();
-  }, [currentPage, postsPerPage]);
-
-
-const nextPage = () => setCurrentPage((prev) => prev+1);
-const prevPage = () => setCurrentPage((prev) => Math.max(prev-1, 1));
-
-return (
+  return(
   <>
-    <h1>Posts</h1>
-    <ul>
-      {posts.map((post) => (
-        <li key={post.id}>{post.title}</li>
-      ))}
-    </ul>
-    <div>
-                
-      <button onClick={prevPage} disabled={currentPage===1}>Previous Page</button>
-        <span>Page: {currentPage} </span>
-      <button onClick={nextPage} >Next Page</button>
-    </div>
-    
-  </>
+  <div
+      style= {{
+      color:'black',
+      backgroundColor:'darkgray',
+      margin: '60px',
+      padding: '0 8px',
+      border: '1px solid ',
+      borderRadius: '5px',
+      fontWeight: 'bold'
 
-)
+      
+    }}>
+    <h1>
+      About Qaf Lab
+    </h1>
+    <p>
+      Qaf Lab is an innovation hub in the heart of Mosul, where young entrepreneurs can 
+      fuse their skills and talent to pursue their passion. Leverage human capacity for 
+      entrepreneurs across iraq, by enriching the local private sector with successful 
+      small businesses enabled by micro funds.
+    </p>
+  </div>
+
+  
+  </>
+  )
+
 }
 
 export default About;
