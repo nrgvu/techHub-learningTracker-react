@@ -1,0 +1,122 @@
+/* Sidebar Navigation Styles */
+
+body{
+  background-color: white;
+}
+.tasks-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.tasks-sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 250px;
+  height: 100vh;
+  background-color: #172e7a;
+  padding: 20px 0;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+  z-index: 1000;
+  overflow-y: auto;
+  display: flex;              /* Add this */
+  flex-direction: column;     /* Add this */
+}
+
+.sidebar-header {
+  padding: 0 20px 30px;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  margin-bottom: 20px;
+}
+
+.sidebar-title {
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+  text-align: center;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0 20px;
+  flex: 1;
+}
+
+.nav-button {
+  display: block;
+  padding: 5px, 8px;
+  background: rgba(255,255,255,0.1);
+  color: white;
+  text-decoration: none;
+  border-radius: 0;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255,255,255,0.2);
+  font-weight: 500;
+  text-align: center;
+  margin: 5px;
+}
+
+.nav-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateX(5px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.nav-button.active {
+  background: white;
+  color: #667eea;
+  font-weight: bold;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.tasks-content {
+  margin-left: 250px; /* Same as sidebar width */
+  padding: 30px;
+  flex: 1;
+  background: #223985;
+  width: calc(100% - 250px);
+  min-height: 100vh;
+
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .tasks-sidebar {
+    width: 200px;
+  }
+  
+}
+
+@media (max-width: 576px) {
+  .tasks-sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  
+
+
+  .back-button { 
+  background-color: #764ba2;
+  border-radius: 3px;
+  margin: 5px 20px 20px 20px;  /* Add left/right margin for consistency */
+  padding: 12px 15px;
+  color: white;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: auto;           /* Add this - pushes button to bottom */
+  
+}
+
+
+
+.back-button:hover {
+  background-color: #6a4190;
+  transform: translateY(-2px);
+}
+}

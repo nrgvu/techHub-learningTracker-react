@@ -1,14 +1,34 @@
-import { Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route, Link, useLocation} from 'react-router-dom'
+
 import './App.css'
 import Home from './pages/Home'
 import Contact from './pages/Contact'
 import About from './pages/About'
 import Services from './pages/Services'
 import LearningTracker from './pages/Learning-tracker'
+import Navigation from './components/Tasks'
+import Post from './components/Post'
+import UserProfile from './components/UserProfile'
+import Todos from './components/Todos'
+import PostDetail from './components/PostDetail'
+
+
+
 function App() {
+  const location = useLocation();
+  const isTasksPage = location.pathname.startsWith('/tasks');
+  
+  // Debug logs
+  console.log('Location object:', location);
+  console.log('Pathname:', location.pathname);
+  console.log('Pathname type:', typeof location.pathname);
+  console.log('startsWith result:', location.pathname.startsWith('/tasks'));
+  console.log('Manual check:', location.pathname === '/tasks');
+
   return (
     <>
-        <header>
+      {/* { !isTasksPage && ( */}
+        <header style={{display: `${isTasksPage ? 'none' : 'flex'}`}}>
          <img src="/tech-hub-logo.png" alt="Tech Hub Logo" className="tech-hub-logo" />
             <div className="nav-buttons">
                 <Link to="/"><button className="header-button">Home</button></Link>
@@ -16,50 +36,32 @@ function App() {
                 <Link to="/services"><button className="header-button">Services</button></Link>
                 <Link to="/learning-tracker"><button className="header-button">Learning Tracker</button></Link>
                 <Link to="/contact"><button className="header-button">Contact</button></Link>
+                {/* <Link to="/post"><button className='header-button'>Post</button> </Link>
+                <Link to ="/userProfile"><button className='header-button'>UserProfile</button></Link>
+                <Link to ="/todos"><button className='header-button'>Todos</button></Link> */}
+                <Link to ="/tasks"><button className='header-button'>Tasks</button></Link>
             </div>
         </header>
-
-
-      {/* Hero Section */}
-      <div className='hero-section'>
-        <h1>Welcome to Tech Hub</h1>
-        <p>Your Gateway to Technology Learning</p>
-        <button className='join-tech-hub'>Join Tech Hub</button>
-      </div>
-
-      {/* Main Content */}
-      <div className='main-content'>
-        <div className='card'>
-          <h2>Courses</h2>
-          <p>Learn programming and tech skills</p>
-        </div>
-        <div className='card'>
-          <h2>Projects</h2>
-          <p>Build real-world applications</p>
-        </div>
-        <div className='card'>
-          <h2>Community</h2>
-          <p>Connect with tech enthusiasts</p>
-        </div>
-      </div>
-
+      {/* )} */}
+ 
+    
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/services" element={< Services/>} />
         <Route path="/learning-tracker" element={<LearningTracker />} />
         <Route path="/contact" element={<Contact />} />
+
+        <Route path="/tasks" element={<Navigation/>} >
+          <Route index element= {<h1>Select a task </h1>} />
+          <Route path="Post" element ={<Post />}/>
+          <Route path="userProfile" element ={<UserProfile />}/>
+          <Route path="todos" element ={<Todos />}/>
+          <Route path="post/:id" element={<PostDetail />}/>
+        </Route>
       </Routes>
 
-      {/* Footer */}
-      <footer>
-        <div className="footer-buttons">
-          <Link to="/about"><button className="footer-button">About</button></Link>
-          <Link to="/courses"><button className="footer-button">Courses</button></Link>
-          <Link to="/contact"><button className="footer-button">Contact</button></Link>
-        </div>
-        <div>© 2025 Tech Hub</div>
-      </footer>
+      
     </>
   )
 }

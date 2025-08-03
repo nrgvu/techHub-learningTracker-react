@@ -11,16 +11,20 @@ body {
 header {
   position:fixed;
   width: 100%;
-  
+  left: 0;
+  top: 0;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: rgb(255, 255, 255);
   padding: 5px;
-  margin: 0,0,15px,0;
+  margin: 0;
+  z-index: 1000;
   gap: 15px;
-  border-radius: 10px;
+  border-radius: 0;
+
 }
 
 .tech-hub-logo {
@@ -55,7 +59,7 @@ header {
   align-items: center;
   justify-content: center;
   text-align: center;
-  border-radius: 20px;
+  border-radius: 5px;
 
 }
 
@@ -83,13 +87,17 @@ header {
 
 .main-content {
   background-color: #fff8e1;
-  margin: 15px;
   padding: 30px;
   display: flex;
   justify-content: center;
   gap: 20px;
   flex-wrap: wrap;
-  border-radius: 20px;
+  border-radius: 5px;
+  margin-bottom: 100px;
+  margin-top: 20px;
+
+
+
 
 }
 
@@ -118,6 +126,10 @@ header {
 }
 
 footer {
+ position: fixed; 
+  bottom: 0;       /* Stick to bottom */
+  left: 0;
+  width: 100%;     /* Full width of screen */
   color: black;
   background-color: lightcyan;
   display: flex;
@@ -125,11 +137,11 @@ footer {
   align-items: center;
   flex-direction: column;
   padding: 20px;
-  margin: 15px;
-  border-radius: 20px;
-
+  /* Remove margin to prevent gaps */
+  margin: 0;
+  border-radius: 0;
+  box-sizing: border-box; /* To include padding in size calculations */
 }
-
 .footer-buttons {
   display: flex;
   gap: 10px;
@@ -279,4 +291,22 @@ footer {
 .stat-card p {
   color: #666;
   font-size: 0.9rem;
+}
+
+
+
+
+
+/* About */
+.about{
+  align-items: center;
+  justify-content: center;
+  background-color:#2c5d80;
+  border-radius: 5px;
+  padding: 4px;
+}
+
+.about p{
+  align-items: center;
+  justify-content: center;
 }
